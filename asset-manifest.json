@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/saywhat/static/css/main.e6c13ad2.css",
+    "main.js": "/saywhat/static/js/main.54542f5b.js",
+    "static/js/453.31e4dbe5.chunk.js": "/saywhat/static/js/453.31e4dbe5.chunk.js",
+    "index.html": "/saywhat/index.html",
+    "main.e6c13ad2.css.map": "/saywhat/static/css/main.e6c13ad2.css.map",
+    "main.54542f5b.js.map": "/saywhat/static/js/main.54542f5b.js.map",
+    "453.31e4dbe5.chunk.js.map": "/saywhat/static/js/453.31e4dbe5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.54542f5b.js"
+  ]
+}
