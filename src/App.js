@@ -1,14 +1,28 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-
-const questions = Array.from({ length: 100 }, (_, i) => `Введите вопрос №${i + 1}`);
+import React, { useState, useEffect } from "react";
+import { Button } from "./components/ui/button";
+import { Card, CardContent } from "./components/ui/card";
 
 export default function ZoomDiceGame() {
-  const [diceResult, setDiceResult] = useState<number | null>(null);
-  const [currentQuestion, setCurrentQuestion] = useState<string | null>(null);
+  const [diceResult, setDiceResult] = useState(null);
+  const [currentQuestion, setCurrentQuestion] = useState(null);
   const [editMode, setEditMode] = useState(false);
-  const [customQuestions, setCustomQuestions] = useState([...questions]);
+  const [customQuestions, setCustomQuestions] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("https://gist.githubusercontent.com/kpucapuc/ed789ed5ecabb334f357d2273148516a/raw/6f362887ac48fecceb2ef48d4ef8583c1816509a/questions.json")
+      .then(res => res.json())
+      .then(data => {
+        setCustomQuestions(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        // Если не удалось загрузить — подставим стандарт
+        const fallback = Array.from({ length: 100 }, (_, i) => `Введите вопрос №${i + 1}`);
+        setCustomQuestions(fallback);
+        setLoading(false);
+      });
+  }, []);
 
   const rollDice = () => {
     const result = Math.floor(Math.random() * 100) + 1;
@@ -16,24 +30,33 @@ export default function ZoomDiceGame() {
     setCurrentQuestion(customQuestions[result - 1]);
   };
 
-  const handleQuestionChange = (index: number, value: string) => {
+  const handleQuestionChange = (index, value) => {
     const updated = [...customQuestions];
     updated[index] = value;
     setCustomQuestions(updated);
   };
 
+  if (loading) return <p className="text-center mt-10">Загрузка вопросов...</p>;
+
   return (
     <div className="min-h-screen p-8 bg-gray-100 text-center">
       <h1 className="text-3xl font-bold mb-6">🎲 Поделись со мной</h1>
 
-      <div className="mb-8 space-x-4">
-        <Button onClick={() => setEditMode(false)} variant={!editMode ? "default" : "outline"}>Колода</Button>
-        <Button onClick={() => setEditMode(true)} variant={editMode ? "default" : "outline"}>Каталог карт</Button>
+      <div className="mb-8 flex justify-center space-x-4">
+        <Button onClick={() => setEditMode(false)} variant={!editMode ? "default" : "outline"}>
+          Колода
+        </Button>
+        <Button onClick={() => setEditMode(true)} variant={editMode ? "default" : "outline"}>
+          Каталог карт
+        </Button>
       </div>
 
       {!editMode ? (
         <div>
-          <Button className="mb-6" onClick={rollDice}>Бросить d100</Button>
+          <div className="flex justify-center mb-6">
+            <Button onClick={rollDice}>Бросить d100</Button>
+          </div>
+
           {diceResult && (
             <Card className="max-w-xl mx-auto">
               <CardContent className="p-6">
