@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/saywhat/static/css/main.bc8ae95c.css",
-    "main.js": "/saywhat/static/js/main.caef7f1e.js",
+    "main.js": "/saywhat/static/js/main.8146f324.js",
     "static/js/453.31e4dbe5.chunk.js": "/saywhat/static/js/453.31e4dbe5.chunk.js",
     "index.html": "/saywhat/index.html",
     "main.bc8ae95c.css.map": "/saywhat/static/css/main.bc8ae95c.css.map",
-    "main.caef7f1e.js.map": "/saywhat/static/js/main.caef7f1e.js.map",
+    "main.8146f324.js.map": "/saywhat/static/js/main.8146f324.js.map",
     "453.31e4dbe5.chunk.js.map": "/saywhat/static/js/453.31e4dbe5.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bc8ae95c.css",
-    "static/js/main.caef7f1e.js"
+    "static/js/main.8146f324.js"
   ]
 }
