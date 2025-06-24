@@ -40,7 +40,7 @@ export default function ZoomDiceGame() {
 
   return (
     <div className="min-h-screen p-8 bg-gray-100 text-center">
-      <h1 className="text-3xl font-bold mb-6">🎲 Поделись со мной</h1>
+      <h1 className="text-3xl font-bold mb-6">❤️ Поделись со мной ❤️</h1>
 
       <div className="mb-8 flex justify-center space-x-4">
         <Button onClick={() => setEditMode(false)} variant={!editMode ? "default" : "outline"}>
@@ -54,7 +54,7 @@ export default function ZoomDiceGame() {
       {!editMode ? (
         <div>
           <div className="flex justify-center mb-6">
-            <Button onClick={rollDice}>Бросить d100</Button>
+            <Button onClick={rollDice}>Бросить кубик</Button>
           </div>
 
           {diceResult && (
